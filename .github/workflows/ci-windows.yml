@@ -16,11 +16,14 @@ jobs:
         with:
           submodules: recursive
 
+      - uses: microsoft/setup-msbuild@v1
+
       - uses: actions/setup-python@v2
         with:
           python-version: "${{ matrix.python-version }}"
 
-      - uses: microsoft/setup-msbuild@v1
+      - name: Uninstall GCC
+        run: choco uninstall gcc
 
       - name: Install dependencies
         run: |
