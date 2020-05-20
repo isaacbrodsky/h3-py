@@ -29,7 +29,7 @@ jobs:
           python -m pip install --upgrade pip setuptools wheel scikit-build cmake ninja
 
       - name: install from source
-        run: python setup.py bdist_wheel
+        run: pip install .
         env:
           CC: cl.exe
           CXX: cl.exe
