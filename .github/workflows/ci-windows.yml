@@ -22,8 +22,8 @@ jobs:
         with:
           python-version: "${{ matrix.python-version }}"
 
-      - name: Uninstall GCC
-        run: choco uninstall gcc
+      - name: Uninstall GCC (MinGW)
+        run: choco uninstall mingw
 
       - name: Install dependencies
         run: |
