@@ -16,14 +16,11 @@ jobs:
         with:
           submodules: recursive
 
-      - uses: microsoft/setup-msbuild@v1
-
       - uses: actions/setup-python@v2
         with:
           python-version: "${{ matrix.python-version }}"
 
-      - name: Uninstall GCC (MinGW)
-        run: choco uninstall mingw
+      - uses: ilammy/msvc-dev-cmd@v1
 
       - name: Install dependencies
         run: |
@@ -33,3 +30,6 @@ jobs:
 
       - name: install from source
         run: python setup.py bdist_wheel
+        env:
+          CC: cl.exe
+          CXX: cl.exe
